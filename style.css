@@ -1,0 +1,87 @@
+* {
+    padding: 0;
+    margin: 0;
+    vertical-align: top;
+    box-sizing: border-box;
+    /* outline: red dotted 1px; */
+}
+
+#wrapper {
+    width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    font-size: x-large;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: goldenrod;
+    text-shadow: 2px 2px black;
+    height: 200px;
+    margin-bottom: 25px;
+}
+
+#head {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+}
+
+#twos, #fours, #sixs, #eights, #tens {
+    display: flex;
+    justify-content: center;
+}
+
+.tiles {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 50px;
+    background-color: rgb(32, 26, 176);
+    border: black solid 2px;
+    color: goldenrod;
+    font-size: larger;
+    font-weight: 600;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.tiles:hover {
+    background-color: gray;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: goldenrod;
+    font-weight: 600;
+    font-size: larger;
+    text-shadow: 2px 2px black;
+}
+
+#form {
+    display: flex;
+}
+
+.bottom {
+    margin-right: 20px;
+}
+
+#answer {
+    width: 200px;
+}
+
+#question {
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 550;
+    font-size: larger;
+}
