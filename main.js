@@ -5,82 +5,158 @@ const main = async () => {
     const data = await httpResponse.json()
 
     // Query elements
-    const two = document.querySelector("#two")
-    const four = document.querySelector("#four")
-    const six = document.querySelector("#six")
-    const eight = document.querySelector("#eight")
-    const ten = document.querySelector("#ten")
-    const score = document.querySelector("#score")
-    const question = document.querySelector("#question")
-    const answer = document.querySelector("#answer")
-    const submitForm = document.querySelector("#form")
+    const two = $("#twos")
+    const four = $("#fours")
+    const six = $("#sixs")
+    const eight = $("#eights")
+    const ten = $("#tens")
+    const score = $("#score")
+    const question = $("#question")
+    const answer = $("#answer")
+    const submitForm = $("#form")
 
-    // Set defaults
-    let totalScore = 0
-    score.innerText = `YOUR SCORE: $${totalScore}`
+    // Set randomObject globally
+    let randomObject
 
-    // Get random object from JSON array
-    let randObj = data[Math.ceil(Math.random() * data.length - 1)]
+    // Set default score
+    let getSavedScore = localStorage.getItem('savedScore')
+    if(getSavedScore === null) {
+        getSavedScore = 0
+        score.text(`YOUR SCORE: $${getSavedScore}`)
+    }
+    else {
+        score.text(`YOUR SCORE: $${getSavedScore}`)
+    }
 
     // Event listener for $200
-    two.addEventListener('click', () => {
+    two.on('click', e => {
 
-        while(randObj.value !== "$200") {
-            randObj = data[Math.ceil(Math.random() * data.length - 1)]
+        if($(e.target).hasClass("disable")) {
+
         }
-        console.log(randObj)
-        question.innerText = `${randObj.question}?`
+        else {
+            // Get random object from JSON array
+            randomObject = data[Math.ceil(Math.random() * data.length - 1)]
+            while(randomObject.value !== "$200") {
+                randomObject = data[Math.ceil(Math.random() * data.length - 1)]
+            }
+            console.log(randomObject)
+            question.text(`${randomObject.question}?`)
+            $(e.target).text("")
+            $(e.target).addClass("disable")
+        }     
 
     })
 
     // Event listener for $400
-    four.addEventListener('click', () => {
+    four.on('click', e => {
 
-        while(randObj.value !== "$400") {
-            randObj = data[Math.ceil(Math.random() * data.length - 1)]
+        if($(e.target).hasClass("disable")) {
+
         }
-        question.innerText = `${randObj.question}?`
+        else {
+            // Get random object from JSON array
+            randomObject = data[Math.ceil(Math.random() * data.length - 1)]
+            while(randomObject.value !== "$400") {
+                randomObject = data[Math.ceil(Math.random() * data.length - 1)]
+            }
+            console.log(randomObject)
+            question.text(`${randomObject.question}?`)
+            $(e.target).text("")
+            $(e.target).addClass("disable")
+        }
 
     })
 
     // Event listener for $600
-    six.addEventListener('click', () => {
+    six.on('click', e => {
 
-        while(randObj.value !== "$600") {
-            randObj = data[Math.ceil(Math.random() * data.length - 1)]
+        if($(e.target).hasClass("disable")) {
+
         }
-        question.innerText = `${randObj.question}?`
+        else {
+            // Get random object from JSON array
+            randomObject = data[Math.ceil(Math.random() * data.length - 1)]
+            while(randomObject.value !== "$600") {
+                randomObject = data[Math.ceil(Math.random() * data.length - 1)]
+            }
+            console.log(randomObject)
+            question.text(`${randomObject.question}?`)
+            $(e.target).text("")
+            $(e.target).addClass("disable")
+        }
 
     })
 
     // Event listener for $800
-    eight.addEventListener('click', () => {
+    eight.on('click', e => {
 
-        while(randObj.value !== "$800") {
-            randObj = data[Math.ceil(Math.random() * data.length - 1)]
+        if($(e.target).hasClass("disable")) {
+
         }
-        question.innerText = `${randObj.question}?`
+        else {
+            // Get random object from JSON array
+            randomObject = data[Math.ceil(Math.random() * data.length - 1)]
+            while(randomObject.value !== "$800") {
+                randomObject = data[Math.ceil(Math.random() * data.length - 1)]
+            }
+            console.log(randomObject)
+            question.text(`${randomObject.question}?`)
+            $(e.target).text("")
+            $(e.target).addClass("disable")
+        }
 
     })
 
     // Event listener for $1000
-    ten.addEventListener('click', () => {
+    ten.on('click', e => {
 
-        while(randObj.value !== "$1,000") {
-            randObj = data[Math.ceil(Math.random() * data.length - 1)]
+        if($(e.target).hasClass("disable")) {
+
         }
-        question.innerText = `${randObj.question}?`
+        else {
+            // Get random object from JSON array
+            randomObject = data[Math.ceil(Math.random() * data.length - 1)]
+            while(randomObject.value !== "$1,000") {
+                randomObject = data[Math.ceil(Math.random() * data.length - 1)]
+            }
+            console.log(randomObject)
+            question.text(`${randomObject.question}?`)
+            $(e.target).text("")
+            $(e.target).addClass("disable")
+        }
 
     })
 
     // Event listener for submit
-    submitForm.addEventListener('click', e => {
+    submitForm.on('submit', e => {
 
         e.preventDefault()
 
-        if(answer.value.toLowerCase() === randObj.answer.toLowerCase()) {
-            
-            question.innerText = "CORRECT!"
+        let value = randomObject.value
+        let newValue = ""
+        for(let i = 0; i < value.length; i++) {
+            if(value[i] === "$" || value[i] === ",") {
+                continue
+            }
+            else {
+                newValue += value[i]
+            }
+        }
+        
+        if(answer.val().toLowerCase() === randomObject.answer.toLowerCase()) {
+            getSavedScore = Number(getSavedScore) + Number(newValue)
+            score.text(`YOUR SCORE: $${getSavedScore}`)
+            question.text("CORRECT!")
+            answer.val("")
+            localStorage.setItem('savedScore', getSavedScore)
+        }
+        else {
+            getSavedScore = Number(getSavedScore) - Number(newValue)
+            score.text(`YOUR SCORE: $${getSavedScore}`)
+            question.text("INCORRECT!")
+            answer.val("")
+            localStorage.setItem('savedScore', getSavedScore)
         }
 
     })
