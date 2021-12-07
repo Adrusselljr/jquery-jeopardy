@@ -154,7 +154,7 @@ const main = async () => {
         else {
             getSavedScore = Number(getSavedScore) - Number(newValue)
             score.text(`YOUR SCORE: $${getSavedScore}`)
-            question.text("INCORRECT!")
+            question.text(`INCORRECT! Correct answer was: ${randomObject.answer}`)
             answer.val("")
             localStorage.setItem('savedScore', getSavedScore)
         }
