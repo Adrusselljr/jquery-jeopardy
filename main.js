@@ -133,7 +133,26 @@ const main = async () => {
 
         e.preventDefault()
 
+        // Helper functions
+        const correct = () => {
+            getSavedScore = Number(getSavedScore) + Number(newValue)
+            score.text(`YOUR SCORE: $${getSavedScore}`)
+            question.text("CORRECT!")
+            answer.val("")
+            localStorage.setItem('savedScore', getSavedScore)
+        }
+
+        const incorrect = () => {
+            getSavedScore = Number(getSavedScore) - Number(newValue)
+            score.text(`YOUR SCORE: $${getSavedScore}`)
+            question.text(`INCORRECT! Correct answer was: ${randomObject.answer}`)
+            answer.val("")
+            localStorage.setItem('savedScore', getSavedScore)
+        }
+
         let value = randomObject.value
+
+        // Drop '$' and ','
         let newValue = ""
         for(let i = 0; i < value.length; i++) {
             if(value[i] === "$" || value[i] === ",") {
@@ -143,20 +162,12 @@ const main = async () => {
                 newValue += value[i]
             }
         }
-        
-        if(answer.val().toLowerCase() === randomObject.answer.toLowerCase()) {
-            getSavedScore = Number(getSavedScore) + Number(newValue)
-            score.text(`YOUR SCORE: $${getSavedScore}`)
-            question.text("CORRECT!")
-            answer.val("")
-            localStorage.setItem('savedScore', getSavedScore)
+
+        if(answer.val().toLowerCase() === randomObject.answer.toString().toLowerCase()) {
+            correct()
         }
         else {
-            getSavedScore = Number(getSavedScore) - Number(newValue)
-            score.text(`YOUR SCORE: $${getSavedScore}`)
-            question.text(`INCORRECT! Correct answer was: ${randomObject.answer}`)
-            answer.val("")
-            localStorage.setItem('savedScore', getSavedScore)
+            incorrect()
         }
 
     })
