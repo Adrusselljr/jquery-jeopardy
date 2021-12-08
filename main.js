@@ -18,7 +18,7 @@ const main = async () => {
     // Set randomObject globally
     let randomObject
 
-    // Set default score
+    // Set score
     let getSavedScore = localStorage.getItem('savedScore')
     if(getSavedScore === null) {
         getSavedScore = 0
