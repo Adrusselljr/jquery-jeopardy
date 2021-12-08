@@ -95,3 +95,15 @@ footer {
     border: black solid 2px;
     background-color: gray;
 }
+
+#submit {
+    display: flex;
+    justify-content: center;
+    background-color: rgb(32, 26, 176);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: goldenrod;
+    border-radius: 5px;
+    border: black solid 1px;
+    width: 50px;
+    font-weight: 600;
+}
