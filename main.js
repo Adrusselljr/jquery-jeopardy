@@ -28,6 +28,18 @@ const main = async () => {
         score.text(`YOUR SCORE: $${getSavedScore}`)
     }
 
+    const helpClick = value => {
+
+        // Get random object from JSON array
+        randomObject = data[Math.ceil(Math.random() * data.length - 1)]
+        while(randomObject.value !== value) {
+            randomObject = data[Math.ceil(Math.random() * data.length - 1)]
+        }
+        console.log(randomObject)
+        question.text(`${randomObject.question}?`)
+
+    }
+
     // Event listener for $200
     two.on('click', e => {
 
@@ -35,13 +47,7 @@ const main = async () => {
 
         }
         else {
-            // Get random object from JSON array
-            randomObject = data[Math.ceil(Math.random() * data.length - 1)]
-            while(randomObject.value !== "$200") {
-                randomObject = data[Math.ceil(Math.random() * data.length - 1)]
-            }
-            console.log(randomObject)
-            question.text(`${randomObject.question}?`)
+            helpClick("$200")
             $(e.target).text("")
             $(e.target).addClass("disable")
         }     
@@ -55,13 +61,7 @@ const main = async () => {
 
         }
         else {
-            // Get random object from JSON array
-            randomObject = data[Math.ceil(Math.random() * data.length - 1)]
-            while(randomObject.value !== "$400") {
-                randomObject = data[Math.ceil(Math.random() * data.length - 1)]
-            }
-            console.log(randomObject)
-            question.text(`${randomObject.question}?`)
+            helpClick("$400")
             $(e.target).text("")
             $(e.target).addClass("disable")
         }
@@ -75,13 +75,7 @@ const main = async () => {
 
         }
         else {
-            // Get random object from JSON array
-            randomObject = data[Math.ceil(Math.random() * data.length - 1)]
-            while(randomObject.value !== "$600") {
-                randomObject = data[Math.ceil(Math.random() * data.length - 1)]
-            }
-            console.log(randomObject)
-            question.text(`${randomObject.question}?`)
+            helpClick("$600")
             $(e.target).text("")
             $(e.target).addClass("disable")
         }
@@ -95,13 +89,7 @@ const main = async () => {
 
         }
         else {
-            // Get random object from JSON array
-            randomObject = data[Math.ceil(Math.random() * data.length - 1)]
-            while(randomObject.value !== "$800") {
-                randomObject = data[Math.ceil(Math.random() * data.length - 1)]
-            }
-            console.log(randomObject)
-            question.text(`${randomObject.question}?`)
+            helpClick("$800")
             $(e.target).text("")
             $(e.target).addClass("disable")
         }
@@ -115,13 +103,7 @@ const main = async () => {
 
         }
         else {
-            // Get random object from JSON array
-            randomObject = data[Math.ceil(Math.random() * data.length - 1)]
-            while(randomObject.value !== "$1,000") {
-                randomObject = data[Math.ceil(Math.random() * data.length - 1)]
-            }
-            console.log(randomObject)
-            question.text(`${randomObject.question}?`)
+            helpClick("$1,000")
             $(e.target).text("")
             $(e.target).addClass("disable")
         }
