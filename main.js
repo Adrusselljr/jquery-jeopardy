@@ -163,7 +163,7 @@ const main = async () => {
             }
         }
 
-        if(answer.val().toLowerCase() === randomObject.answer.toString().toLowerCase()) {
+        if(answer.val().toString().toLowerCase() === randomObject.answer.toString().toLowerCase()) {
             correct()
         }
         else {
