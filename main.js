@@ -28,6 +28,7 @@ const main = async () => {
         score.text(`YOUR SCORE: $${getSavedScore}`)
     }
 
+    // Helper function for click listeners
     const helpClick = value => {
 
         // Get random object from JSON array
